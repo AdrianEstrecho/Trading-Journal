@@ -1,0 +1,115 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-glow-blue: #3b82f6;
+  --color-glow-green: #4ade80;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #020617;
+  color: #e2e8f0;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Native <select> popups are rendered by the OS/browser, not by Tailwind
+   classes — force a dark color-scheme on the control so the options list
+   isn't a jarring light popup, with explicit colors as a fallback. */
+select {
+  color-scheme: dark;
+}
+
+select option {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+.ambient-glow {
+  opacity: 0.5;
+  background:
+    radial-gradient(600px circle at 15% 0%, color-mix(in srgb, var(--color-glow-blue) 14%, transparent), transparent 60%),
+    radial-gradient(600px circle at 85% 20%, color-mix(in srgb, var(--color-glow-green) 12%, transparent), transparent 60%);
+}
+
+.glow-card {
+  box-shadow:
+    0 0 0 1px rgba(148, 163, 184, 0.06),
+    0 10px 30px -10px rgba(0, 0, 0, 0.6);
+}
+
+.glow-blue {
+  box-shadow:
+    0 0 0 1px rgba(59, 130, 246, 0.2),
+    0 0 28px -4px rgba(59, 130, 246, 0.5);
+}
+
+.glow-green {
+  box-shadow:
+    0 0 0 1px rgba(74, 222, 128, 0.2),
+    0 0 28px -4px rgba(74, 222, 128, 0.5);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
