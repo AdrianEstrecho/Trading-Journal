@@ -52,8 +52,8 @@ export function computeStats(filteredTrades) {
   const scratch = filteredTrades.filter((t) => t.result === 'scratch')
   const decided = wins.length + losses.length
   const winRate = decided ? (wins.length / decided) * 100 : 0
-  const pipsWon = wins.reduce((sum, t) => sum + (t.pips || 0), 0)
-  const pipsLost = losses.reduce((sum, t) => sum + (t.pips || 0), 0)
+  const pipsWon = wins.reduce((sum, t) => sum + Math.abs(t.pips || 0), 0)
+  const pipsLost = losses.reduce((sum, t) => sum + Math.abs(t.pips || 0), 0)
   const netPips = pipsWon - pipsLost
   const totalPL = filteredTrades.reduce((sum, t) => sum + (t.profitLoss || 0), 0)
 
