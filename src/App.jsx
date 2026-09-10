@@ -23,7 +23,15 @@ export default function App() {
     <div className="min-h-screen bg-slate-950">
       <div className="ambient-glow pointer-events-none fixed inset-0" />
       <div className="relative mx-auto flex max-w-6xl flex-col">
-        <Header onClearAll={handleClearAll} />
+        <Header
+          onClearAll={handleClearAll}
+          syncCode={store.syncCode}
+          syncStatus={store.syncStatus}
+          syncError={store.syncError}
+          onStartSync={store.startSync}
+          onLinkSync={store.linkSync}
+          onStopSync={store.stopSync}
+        />
         <main className="flex flex-col gap-10 px-4 py-6 sm:px-8 sm:py-8">
           <AccountBalance
             trades={store.trades}
